@@ -1,14 +1,6 @@
 {
   "name": "@aow/api",
-  "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsup",
-    "start": "node dist/index.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
-  },
   "dependencies": {
     "@aow/database": "workspace:*",
     "@aow/types": "workspace:*",
