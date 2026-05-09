@@ -48,7 +48,10 @@ function DashboardEventTypesContent() {
                   <span className='font-semibold'>{type.name}</span>
                   <div className='flex gap-2'>
                     <EditEventTypeForm eventType={type} />
-                    <DeleteEventTypeButton eventTypeId={type.id} />
+                    <DeleteEventTypeButton
+                      id={type.id}
+                      name={type.name}
+                    />
                   </div>
                 </div>
               </div>

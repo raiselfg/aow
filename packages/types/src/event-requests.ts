@@ -40,8 +40,8 @@ export const EventRequestSchema = z.object({
     .min(1, 'Введите номер телефона')
     .regex(/^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/, 'Введите номер телефона'),
   event_type_id: z.uuid('Выберите тип события'),
-  start_date: z.coerce.date(),
-  end_date: z.coerce.date(),
+  start_date: z.date(),
+  end_date: z.date(),
   guests: z
     .number('Введите число')
     .int('Введите целое число')
@@ -53,20 +53,34 @@ export const EventRequestSchema = z.object({
   status: RequestStatusEnum,
   address: z.string().min(1, 'Введите адрес мероприятия'),
   comment: z.string().nullable().optional(),
-  created_at: z.coerce.date(),
-  updated_at: z.coerce.date(),
+  created_at: z.date(),
+  updated_at: z.date(),
 });
 
 export const EventRequestWithEventTypeSchema = EventRequestSchema.extend({
   event_type: EventTypeSchema,
 });
 
-export const CreateEventRequestSchema = EventRequestSchema.omit({
-  id: true,
-  created_at: true,
-  updated_at: true,
-}).extend({
-  status: RequestStatusEnum.default('unconfirmed'),
+export const CreateEventRequestSchema = z.object({
+  name: z.string().min(1, 'Введите имя клиента'),
+  phone: z
+    .string()
+    .min(1, 'Введите номер телефона')
+    .regex(/^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/, 'Введите номер телефона'),
+  event_type_id: z.uuid('Выберите тип события'),
+  start_date: z.date(),
+  end_date: z.date(),
+  guests: z
+    .number('Введите число')
+    .int('Введите целое число')
+    .min(0, 'Количество гостей не может быть отрицательным'),
+  budget: z
+    .number('Введите число')
+    .int('Введите целое число')
+    .min(0, 'Бюджет не может быть отрицательным'),
+  status: RequestStatusEnum,
+  address: z.string().min(1, 'Введите адрес мероприятия'),
+  comment: z.string().nullable().optional(),
 });
 
 export const UpdateEventRequestSchema = CreateEventRequestSchema.partial();
