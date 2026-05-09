@@ -1,6 +1,6 @@
-import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { prisma } from '@aow/database';
 import { LandingCategorySchema as BaseLandingCategorySchema } from '@aow/types/product-categories.js';
+import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 
 export const storefrontRoutes = new OpenAPIHono();
 

@@ -1,4 +1,3 @@
-import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { prisma } from '@aow/database';
 import {
   ProductCategoryWithProductsSchema as BaseProductCategoryWithProductsSchema,
@@ -6,6 +5,7 @@ import {
   ProductCategorySchema,
   UpdateProductCategorySchema,
 } from '@aow/types/product-categories.js';
+import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 
 import { NotFoundError, ValidationError } from '../lib/errors.js';
 

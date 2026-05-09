@@ -1,10 +1,10 @@
-import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { prisma } from '@aow/database';
 import {
   ProductWithProductCategorySchema as BaseProductWithProductCategorySchema,
   CreateProductApiSchema as BaseCreateProductApiSchema,
   UpdateProductBodySchema as BaseUpdateProductBodySchema,
 } from '@aow/types/products.js';
+import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { randomUUID } from 'crypto';
 
 import { NotFoundError } from '../lib/errors.js';
