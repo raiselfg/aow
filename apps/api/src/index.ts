@@ -153,6 +153,7 @@ serve(
     hostname,
   },
   info => {
-    console.log(`Server is running on http://${hostname}:${info.port}`);
+    console.log(`Server is running on http://localhost:${info.port}`);
+    console.log(`Environment: ${env.NODE_ENV}`);
   },
 );

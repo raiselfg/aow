@@ -1,8 +1,8 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router';
 import { Badge } from '@aow/ui/components/badge';
 import { Separator } from '@aow/ui/components/separator';
 import { Skeleton } from '@aow/ui/components/skeleton';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
 
 import { productOptions } from '@/lib/query-options';
 import { CreateProductForm } from '@/products/components/create-product-form';

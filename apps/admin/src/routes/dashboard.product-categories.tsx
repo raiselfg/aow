@@ -1,7 +1,7 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router';
 import { Badge } from '@aow/ui/components/badge';
 import { Separator } from '@aow/ui/components/separator';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { createFileRoute } from '@tanstack/react-router';
 
 import { categoryOptions } from '@/lib/query-options';
 import { CategorySortableList } from '@/product-category/components/category-sortable-list';

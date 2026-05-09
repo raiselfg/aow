@@ -1,5 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   CreateProductFormSchema,
   type CreateProductFormDTO,
@@ -24,6 +22,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@aow/ui/components/select';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Loader2, Upload } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -56,7 +56,7 @@ export const CreateProductForm = () => {
       product_category_id: '',
       file: undefined,
     },
-    mode: 'all',
+    mode: 'onSubmit',
   });
 
   const onDrop = useCallback(

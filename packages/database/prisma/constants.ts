@@ -130,47 +130,47 @@ export const products = [
 
 export const eventTypes = [
   {
-    id: 'f9b1b1b1-b1b1-b1b1-b1b1-b1b1b1b1b1b1',
+    id: 'f9b1b1b1-b1b1-41b1-b1b1-b1b1b1b1b1b1',
     name: 'Свадьба',
   },
   {
-    id: 'f9b1b1b1-b1b1-b1b1-b1b1-b1b1b1b1b1b2',
+    id: 'f9b1b1b1-b1b1-41b1-b1b1-b1b1b1b1b1b2',
     name: 'День Рождения',
   },
   {
-    id: 'f9b1b1b1-b1b1-b1b1-b1b1-b1b1b1b1b1b3',
+    id: 'f9b1b1b1-b1b1-41b1-b1b1-b1b1b1b1b1b3',
     name: 'Корпоратив',
   },
   {
-    id: 'f9b1b1b1-b1b1-b1b1-b1b1-b1b1b1b1b1b4',
+    id: 'f9b1b1b1-b1b1-41b1-b1b1-b1b1b1b1b1b4',
     name: 'Детский праздник',
   },
 ];
 
 export const eventRequests = [
   {
-    id: 'a1b1b1b1-b1b1-b1b1-b1b1-b1b1b1b1b1b1',
+    id: 'a1b1b1b1-b1b1-41b1-b1b1-b1b1b1b1b1b1',
     name: 'Иван Иванов',
-    phone: '+79991234567',
+    phone: '+7-999-123-45-67',
     event_type_id: eventTypes[0].id,
     start_date: new Date('2026-06-15T16:00:00Z'),
     end_date: new Date('2026-06-15T22:00:00Z'),
     guests: 50,
     budget: 150000,
-    status: 'new' as const,
+    status: 'unconfirmed' as const,
     address: 'ул. Пушкина, д. Колотушкина',
     comment: 'Нужен ведущий и диджей',
   },
   {
-    id: 'a1b1b1b1-b1b1-b1b1-b1b1-b1b1b1b1b1b2',
+    id: 'a1b1b1b1-b1b1-41b1-b1b1-b1b1b1b1b1b2',
     name: 'Мария Петрова',
-    phone: '+79997654321',
+    phone: '+7-999-765-43-21',
     event_type_id: eventTypes[1].id,
     start_date: new Date('2026-07-20T14:00:00Z'),
     end_date: new Date('2026-07-20T18:00:00Z'),
     guests: 20,
     budget: 50000,
-    status: 'in_progress' as const,
+    status: 'unconfirmed' as const,
     address: 'пр. Мира, д. 10',
     comment: 'Торт обязателен',
   },

@@ -1,10 +1,10 @@
-import { createFileRoute, redirect, Outlet } from '@tanstack/react-router';
 import {
   SidebarProvider,
   SidebarInset,
   SidebarTrigger,
 } from '@aow/ui/components/sidebar';
 import { Spinner } from '@aow/ui/components/spinner';
+import { createFileRoute, redirect, Outlet } from '@tanstack/react-router';
 
 import { DashboardSidebar } from '@/components/dashboard-sidebar';
 import { authClient } from '@/lib/auth-client';

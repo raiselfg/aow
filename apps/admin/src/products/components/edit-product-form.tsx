@@ -1,5 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   UpdateProductBodySchema,
   type ProductWithProductCategory,
@@ -26,6 +24,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@aow/ui/components/select';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { SquarePen } from 'lucide-react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -58,7 +58,7 @@ export const EditProductForm = ({ product }: Props) => {
       is_active: product.is_active,
       product_category_id: product.product_category_id,
     },
-    mode: 'all',
+    mode: 'onSubmit',
   });
 
   const updateMutation = useMutation({

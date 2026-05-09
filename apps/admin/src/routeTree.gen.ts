@@ -14,6 +14,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardProductsRouteImport } from './routes/dashboard.products'
 import { Route as DashboardProductCategoriesRouteImport } from './routes/dashboard.product-categories'
+import { Route as DashboardEventTypesRouteImport } from './routes/dashboard.event-types'
+import { Route as DashboardEventRequestsRouteImport } from './routes/dashboard.event-requests'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
@@ -41,16 +43,30 @@ const DashboardProductCategoriesRoute =
     path: '/product-categories',
     getParentRoute: () => DashboardRoute,
   } as any)
+const DashboardEventTypesRoute = DashboardEventTypesRouteImport.update({
+  id: '/event-types',
+  path: '/event-types',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardEventRequestsRoute = DashboardEventRequestsRouteImport.update({
+  id: '/event-requests',
+  path: '/event-requests',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/dashboard/event-requests': typeof DashboardEventRequestsRoute
+  '/dashboard/event-types': typeof DashboardEventTypesRoute
   '/dashboard/product-categories': typeof DashboardProductCategoriesRoute
   '/dashboard/products': typeof DashboardProductsRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dashboard/event-requests': typeof DashboardEventRequestsRoute
+  '/dashboard/event-types': typeof DashboardEventTypesRoute
   '/dashboard/product-categories': typeof DashboardProductCategoriesRoute
   '/dashboard/products': typeof DashboardProductsRoute
   '/dashboard': typeof DashboardIndexRoute
@@ -59,6 +75,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/dashboard/event-requests': typeof DashboardEventRequestsRoute
+  '/dashboard/event-types': typeof DashboardEventTypesRoute
   '/dashboard/product-categories': typeof DashboardProductCategoriesRoute
   '/dashboard/products': typeof DashboardProductsRoute
   '/dashboard/': typeof DashboardIndexRoute
@@ -68,12 +86,16 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/dashboard'
+    | '/dashboard/event-requests'
+    | '/dashboard/event-types'
     | '/dashboard/product-categories'
     | '/dashboard/products'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/dashboard/event-requests'
+    | '/dashboard/event-types'
     | '/dashboard/product-categories'
     | '/dashboard/products'
     | '/dashboard'
@@ -81,6 +103,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/dashboard'
+    | '/dashboard/event-requests'
+    | '/dashboard/event-types'
     | '/dashboard/product-categories'
     | '/dashboard/products'
     | '/dashboard/'
@@ -128,16 +152,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardProductCategoriesRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/event-types': {
+      id: '/dashboard/event-types'
+      path: '/event-types'
+      fullPath: '/dashboard/event-types'
+      preLoaderRoute: typeof DashboardEventTypesRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/event-requests': {
+      id: '/dashboard/event-requests'
+      path: '/event-requests'
+      fullPath: '/dashboard/event-requests'
+      preLoaderRoute: typeof DashboardEventRequestsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
 interface DashboardRouteChildren {
+  DashboardEventRequestsRoute: typeof DashboardEventRequestsRoute
+  DashboardEventTypesRoute: typeof DashboardEventTypesRoute
   DashboardProductCategoriesRoute: typeof DashboardProductCategoriesRoute
   DashboardProductsRoute: typeof DashboardProductsRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardEventRequestsRoute: DashboardEventRequestsRoute,
+  DashboardEventTypesRoute: DashboardEventTypesRoute,
   DashboardProductCategoriesRoute: DashboardProductCategoriesRoute,
   DashboardProductsRoute: DashboardProductsRoute,
   DashboardIndexRoute: DashboardIndexRoute,

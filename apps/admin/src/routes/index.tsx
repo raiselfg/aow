@@ -1,5 +1,5 @@
-import { createFileRoute, redirect } from '@tanstack/react-router';
 import { Spinner } from '@aow/ui/components/spinner';
+import { createFileRoute, redirect } from '@tanstack/react-router';
 
 import { SignInForm } from '@/components/signin-form';
 import { authClient } from '@/lib/auth-client';

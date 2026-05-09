@@ -1,6 +1,6 @@
+import { Toaster } from '@aow/ui/components/sonner';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
-import { Toaster } from '@aow/ui/components/sonner';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 

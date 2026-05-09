@@ -1,6 +1,5 @@
 import type { ComponentProps } from 'react';
 
-import { Link } from '@tanstack/react-router';
 import {
   Sidebar,
   SidebarContent,
@@ -12,6 +11,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@aow/ui/components/sidebar';
+import { Link } from '@tanstack/react-router';
 
 const data = {
   navMain: [
@@ -26,6 +26,14 @@ const data = {
         {
           title: 'Товары',
           url: '/dashboard/products',
+        },
+        {
+          title: 'Типы праздников',
+          url: '/dashboard/event-types',
+        },
+        {
+          title: 'Праздники',
+          url: '/dashboard/event-requests',
         },
       ],
     },

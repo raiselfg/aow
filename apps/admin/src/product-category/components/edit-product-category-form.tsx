@@ -1,5 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   UpdateProductCategorySchema,
   type ProductCategoryWithProducts,
@@ -19,6 +17,8 @@ import {
 } from '@aow/ui/components/dialog';
 import { Field, FieldError, FieldLabel } from '@aow/ui/components/field';
 import { Input } from '@aow/ui/components/input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { SquarePen } from 'lucide-react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -48,7 +48,7 @@ export const EditProductCategoryForm = ({ category }: Props) => {
       name: category.name,
       is_active: category.is_active,
     },
-    mode: 'all',
+    mode: 'onSubmit',
   });
 
   const updateMutation = useMutation({

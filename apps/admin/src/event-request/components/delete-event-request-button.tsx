@@ -10,30 +10,32 @@ import {
   DialogTrigger,
 } from '@aow/ui/components/dialog';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-import { productQueries } from '@/lib/query-options';
-import { products } from '@/products/lib/products';
+import { eventRequestQueries } from '@/lib/query-options';
+
+import { eventRequests } from '../lib/event-request';
 
 interface Props {
-  productId: string;
+  requestId: string;
 }
 
-export const DeleteProductButton = ({ productId }: Props) => {
+export const DeleteEventRequestButton = ({ requestId }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const queryClient = useQueryClient();
 
   const deleteMutation = useMutation({
-    mutationFn: (id: string) => products.deleteProduct(id),
+    mutationFn: (id: string) => eventRequests.deleteEventRequest(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: productQueries.all });
+      queryClient.invalidateQueries({ queryKey: eventRequestQueries.all });
       setIsOpen(false);
-      toast.success('Товар успешно удален');
+      toast.success('Заявка успешно удалена');
     },
-    onError: () => toast.error('Ошибка при удалении товара'),
+    onError: () => {
+      toast.error('Ошибка при удалении заявки');
+    },
   });
 
   return (
@@ -46,26 +48,29 @@ export const DeleteProductButton = ({ productId }: Props) => {
           variant={'destructive'}
           size={'icon'}
         >
-          <Trash2 />
+          <Trash2 size={18} />
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className='sm:max-w-110'>
         <DialogHeader>
-          <DialogTitle>Вы уверены что хотите удалить этот товар?</DialogTitle>
+          <DialogTitle>Удаление заявки</DialogTitle>
           <DialogDescription>
-            Это действие необратимо. Оно приведет к безвозвратному удалению
-            данного продукта и данных с сервера.
+            Это действие необратимо. Заявка будет удалена навсегда.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className='flex items-center justify-between'>
-          <DialogClose>
+
+        <DialogFooter className='flex items-center justify-between gap-2'>
+          <DialogClose asChild>
             <Button variant={'outline'}>Отмена</Button>
           </DialogClose>
-
           <Button
             variant={'destructive'}
-            onClick={() => deleteMutation.mutate(productId)}
+            disabled={deleteMutation.isPending}
+            onClick={() => deleteMutation.mutate(requestId)}
           >
+            {deleteMutation.isPending && (
+              <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+            )}
             Удалить
           </Button>
         </DialogFooter>

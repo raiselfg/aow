@@ -1,3 +1,4 @@
+import { type ProductCategoryWithProducts } from '@aow/types';
 import {
   closestCenter,
   DndContext,
@@ -13,7 +14,6 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { type ProductCategoryWithProducts } from '@aow/types';
 import { useState } from 'react';
 
 import { categoryQueries } from '@/lib/query-options';

@@ -1,4 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
 import { SignInSchema, type SignInSchemaType } from '@aow/types';
 import { Button } from '@aow/ui/components/button';
 import {
@@ -10,6 +9,7 @@ import {
 import { Input } from '@aow/ui/components/input';
 import { PasswordInput } from '@aow/ui/components/password-input';
 import { Spinner } from '@aow/ui/components/spinner';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -22,7 +22,7 @@ export const SignInForm = () => {
       email: '',
       password: '',
     },
-    mode: 'all',
+    mode: 'onSubmit',
   });
 
   async function onSubmit(data: SignInSchemaType) {

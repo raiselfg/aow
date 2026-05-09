@@ -1,6 +1,6 @@
+import { type ProductCategoryWithProducts } from '@aow/types/product-categories';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { type ProductCategoryWithProducts } from '@aow/types/product-categories';
 import { GripVertical } from 'lucide-react';
 
 import { ProductCategoryCard } from './product-category-card';

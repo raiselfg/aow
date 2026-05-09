@@ -95,8 +95,7 @@ model ProductCategory {
 }
 
 enum RequestStatus {
-  new
-  in_progress
+  unconfirmed
   confirmed
   completed
   cancelled
@@ -122,7 +121,7 @@ model EventRequest {
   end_date      DateTime
   guests        Int
   budget        Int
-  status        RequestStatus @default(new)
+  status        RequestStatus @default(unconfirmed)
   address       String
   comment       String?       @db.Text
   created_at    DateTime      @default(now())

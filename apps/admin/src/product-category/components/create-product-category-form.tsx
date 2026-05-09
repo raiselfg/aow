@@ -1,5 +1,3 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   CreateProductCategorySchema,
   type CreateProductCategoryDTO,
@@ -17,6 +15,8 @@ import {
 } from '@aow/ui/components/dialog';
 import { Field, FieldError, FieldLabel } from '@aow/ui/components/field';
 import { Input } from '@aow/ui/components/input';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -42,7 +42,7 @@ export const CreateProductCategoryForm = () => {
       name: '',
       is_active: true,
     },
-    mode: 'all',
+    mode: 'onSubmit',
   });
 
   const createMutation = useMutation({
