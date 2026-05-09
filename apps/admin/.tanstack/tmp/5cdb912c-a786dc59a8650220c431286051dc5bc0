@@ -1,0 +1,26 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { Spinner } from '@/components/ui/spinner';
+// Wait, I should check where Spinner is from.
+// In signin-form.tsx it is from '@aow/ui/components/spinner'
+
+export const Route = createFileRoute('/')({
+  component: Index,
+});
+
+function Index() {
+  const { data, isPending } = useSession();
+
+  if (isPending) {
+    return null; // Or a spinner
+  }
+
+  if (data?.user) {
+    return <Navigate to="/dashboard" />;
+  }
+
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <SignInForm />
+    </div>
+  );
+}

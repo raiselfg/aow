@@ -1,0 +1,17 @@
+node_modules
+.next
+.turbo
+dist
+.env
+.env.*
+.git
+.gitignore
+.prettierrc
+.prettierignore
+LICENSE
+README.md
+apps/*/node_modules
+packages/*/node_modules
+apps/*/.next
+apps/*/dist
+packages/*/dist

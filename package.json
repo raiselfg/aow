@@ -1,0 +1,36 @@
+{
+  "name": "aow-turbo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,json,yaml}\"",
+    "prepare": "husky"
+  },
+  "packageManager": "pnpm@11.0.9",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.2",
+    "prettier": "^3.8.3",
+    "prettier-plugin-prisma": "^5.0.0",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "turbo": "^2.9.9"
+  },
+  "lint-staged": {
+    "apps/admin/**/*.{ts,tsx}": [
+      "pnpm --filter @aow/admin lint:fix"
+    ],
+    "apps/landing/**/*.{ts,tsx,mjs}": [
+      "pnpm --filter @aow/landing lint:fix"
+    ],
+    "apps/api/**/*.{ts,js,mjs}": [
+      "pnpm --filter @aow/api lint:fix"
+    ],
+    "**/*.{json,md,css}": [
+      "prettier --write"
+    ]
+  }
+}

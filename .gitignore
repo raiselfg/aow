@@ -1,0 +1,39 @@
+# Turborepo
+.turbo
+
+# Dependencies (pnpm)
+node_modules
+pnpm-debug.log*
+.pnpm-state
+
+# Next.js (apps/landing)
+.next
+out
+build
+
+# Prisma (packages/database)
+# Игнорируем локальные SQLite базы (если используете для dev)
+*.db
+*.db-journal
+# Если Prisma генерирует клиент в кастомную папку (не в node_modules), раскомментируйте:
+# packages/database/generated/
+
+# TypeScript & Build outputs (для packages/ui, packages/database и др.)
+dist
+coverage
+# Важно для Turborepo, чтобы не коммитить кэш TypeScript
+*.tsbuildinfo 
+
+# Environment Variables
+# Файлы .env.*.local игнорируем, а .env.example (если есть) оставляем для коммита
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS & Misc
+.DS_Store
+Thumbs.db
+*.pem
+.vercel
