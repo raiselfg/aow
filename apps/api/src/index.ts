@@ -11,6 +11,8 @@ import { secureHeaders } from 'hono/secure-headers';
 import { auth } from './lib/auth.js';
 import { env } from './lib/env.js';
 import { ApiError } from './lib/errors.js';
+import { eventRequestsRoutes } from './routes/event-requests.js';
+import { eventTypesRoutes } from './routes/event-types.js';
 import { productCategoriesRoutes } from './routes/product-categories.js';
 import { productsRoutes } from './routes/products.js';
 import { storefrontRoutes } from './routes/storefront.js';
@@ -99,6 +101,8 @@ app.route('/storefront', storefrontRoutes);
 
 app.route('/products', productsRoutes);
 app.route('/product-categories', productCategoriesRoutes);
+app.route('/event-types', eventTypesRoutes);
+app.route('/event-requests', eventRequestsRoutes);
 app.route('/upload', uploadRoutes);
 
 // Добавляем защиту для мутаций в роутах
@@ -114,6 +118,14 @@ app.on(
   '/product-categories',
   requireAdminAuth,
 );
+app.on(['POST', 'PATCH', 'DELETE', 'PUT'], '/event-types/*', requireAdminAuth);
+app.on(['POST', 'PATCH', 'DELETE', 'PUT'], '/event-types', requireAdminAuth);
+app.on(
+  ['POST', 'PATCH', 'DELETE', 'PUT'],
+  '/event-requests/*',
+  requireAdminAuth,
+);
+app.on(['POST', 'PATCH', 'DELETE', 'PUT'], '/event-requests', requireAdminAuth);
 app.use('/upload/*', requireAdminAuth);
 app.use('/upload', requireAdminAuth);
 
@@ -142,6 +154,5 @@ serve(
   },
   info => {
     console.log(`Server is running on http://${hostname}:${info.port}`);
-    console.log(`Environment: ${env.NODE_ENV}`);
   },
 );
