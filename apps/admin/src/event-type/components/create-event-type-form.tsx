@@ -1,7 +1,7 @@
 import {
   CreateEventTypeSchema,
   type CreateEventTypeDTO,
-} from '@aow/types/event-requests.js';
+} from '@aow/types/event-types';
 import { Button } from '@aow/ui/components/button';
 import {
   Dialog,

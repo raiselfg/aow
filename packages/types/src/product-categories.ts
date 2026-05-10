@@ -1,17 +1,25 @@
 import { z } from 'zod';
-import type { ProductCategory } from '@aow/database';
 import { ProductSchema, LandingProductSchema } from './products.js';
 
+export interface ProductCategory {
+  id: string;
+  name: string;
+  order: number;
+  is_active: boolean;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export const ProductCategorySchema = z.object({
-  id: z.uuid({ version: 'v4' }),
+  id: z.string().uuid(),
   name: z
     .string()
     .min(1, 'Введите название категории')
     .max(50, 'Название слишком длинное (максимум 50 символов)'),
-  order: z.number('Введите порядковый номер категории'),
+  order: z.number(),
   is_active: z.boolean(),
-  created_at: z.iso.datetime().or(z.date()),
-  updated_at: z.iso.datetime().or(z.date()),
+  created_at: z.date(),
+  updated_at: z.date(),
 });
 
 export const ProductCategoryWithProductsSchema = ProductCategorySchema.extend({
@@ -43,5 +51,3 @@ export type UpdateProductCategoryDTO = z.infer<
 export type ProductCategoryWithProducts = z.infer<
   typeof ProductCategoryWithProductsSchema
 >;
-
-export type { ProductCategory };

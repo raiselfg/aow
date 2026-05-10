@@ -1,8 +1,11 @@
 import prisma from '@/prisma/prisma-client';
-import { UpdateProductCategorySchema, IdParamSchema } from '@/lib/validations';
+import { UpdateProductCategorySchema } from '@aow/types/product-categories';
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
 import { NotFoundError, ValidationError } from '@/lib/errors';
+import { z } from 'zod';
+
+const IdParamSchema = z.object({ id: z.string().uuid() });
 
 export const GET = createHandler(async (_req, { params }) => {
   const { id } = IdParamSchema.parse(await params);

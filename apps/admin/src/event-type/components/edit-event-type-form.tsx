@@ -2,7 +2,7 @@ import {
   UpdateEventTypeSchema,
   type EventType,
   type UpdateEventTypeDTO,
-} from '@aow/types/event-requests.js';
+} from '@aow/types/event-types';
 import { Button } from '@aow/ui/components/button';
 import {
   Dialog,

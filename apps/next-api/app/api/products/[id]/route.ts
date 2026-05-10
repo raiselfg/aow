@@ -1,18 +1,21 @@
 import prisma from '@/prisma/prisma-client';
-import { UpdateProductSchema, IdParamSchema } from '@/lib/validations';
+import { UpdateProductBodySchema } from '@aow/types/products';
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
 import { NotFoundError } from '@/lib/errors';
-import { deleteFile } from '@/lib/s3cloud';
+import { deleteFile } from '@/lib/img-actions';
+import { z } from 'zod';
+
+const IdParamSchema = z.object({ id: z.string().uuid() });
 
 export const GET = createHandler(async (_req, { params }) => {
   const { id } = IdParamSchema.parse(await params);
-  
+
   const product = await prisma.product.findUnique({
     where: { id },
     include: { product_category: true },
   });
-  
+
   if (!product) throw new NotFoundError('Product not found');
   return product;
 });
@@ -21,7 +24,7 @@ export const PATCH = createHandler(async (req, { params }) => {
   await requireAdminAuth();
   const { id } = IdParamSchema.parse(await params);
   const data = await req.json();
-  const validatedData = UpdateProductSchema.parse(data);
+  const validatedData = UpdateProductBodySchema.parse(data);
 
   const existing = await prisma.product.findUnique({ where: { id } });
   if (!existing) throw new NotFoundError('Product not found');

@@ -1,5 +1,5 @@
 import prisma from '@/prisma/prisma-client';
-import { CreateEventRequestSchema } from '@/lib/validations';
+import { CreateEventRequestSchema } from '@aow/types/event-requests';
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
 import { NextResponse } from 'next/server';
@@ -12,17 +12,15 @@ export const GET = createHandler(async () => {
   return eventRequests;
 });
 
-export const POST = createHandler(async req => {
-  // POST usually doesn't require admin auth for event requests (public form)
-  // but let's check Hono setup.
-  // Actually, Hono's index.ts says:
-  // app.on(['POST', 'PATCH', 'DELETE', 'PUT'], '/event-requests/*', requireAdminAuth);
-  // app.on(['POST', 'PATCH', 'DELETE', 'PUT'], '/event-requests', requireAdminAuth);
-  // So it DOES require admin auth.
+export const POST = createHandler(async (req) => {
   await requireAdminAuth();
 
   const body = await req.json();
-  const validatedData = CreateEventRequestSchema.parse(body);
+  const validatedData = CreateEventRequestSchema.parse({
+    ...body,
+    start_date: body.start_date ? new Date(body.start_date) : undefined,
+    end_date: body.end_date ? new Date(body.end_date) : undefined,
+  });
 
   const eventRequest = await prisma.eventRequest.create({
     data: validatedData,
@@ -30,3 +28,4 @@ export const POST = createHandler(async req => {
 
   return NextResponse.json(eventRequest, { status: 201 });
 });
+

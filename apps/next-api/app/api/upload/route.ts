@@ -1,12 +1,12 @@
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
-import { uploadFile } from '@/lib/s3cloud';
+import { uploadFile } from '@/lib/img-actions';
 import { ValidationError } from '@/lib/errors';
 import { NextResponse } from 'next/server';
 
-export const POST = createHandler(async (req) => {
+export const POST = createHandler(async req => {
   await requireAdminAuth();
-  
+
   const formData = await req.formData();
   const file = formData.get('file') as File | null;
 

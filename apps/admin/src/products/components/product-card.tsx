@@ -37,7 +37,7 @@ export const ProductCard = memo(
                 {product.product_category.name}
               </Badge>
             )}
-            <span className='truncate text-sm font-semibold'>
+            <span className='line-clamp-1 text-sm font-semibold'>
               {product.name}
             </span>
           </div>

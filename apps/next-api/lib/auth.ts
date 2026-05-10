@@ -12,15 +12,11 @@ export const auth = betterAuth({
     enabled: true,
     requireEmailVerification: false,
   },
-  trustedOrigins: ['https://aow-admin-nu.vercel.app', 'http://localhost:5173'],
-  session: {
-    expiresIn: 604800,
-    updateAge: 86400,
-    cookieCache: {
-      enabled: true,
-      maxAge: 300,
-    },
-  },
+  trustedOrigins: [
+    'https://aow-admin-nu.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000',
+  ],
   advanced: {
     useSecureCookies: process.env.NODE_ENV === 'production',
     cookiePrefix: 'aow_auth',

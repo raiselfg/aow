@@ -1,7 +1,7 @@
 import axios, { isAxiosError } from 'axios';
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_BETTER_AUTH_BASE_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
 });
 

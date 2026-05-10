@@ -1,4 +1,4 @@
-import { type ProductCategoryWithProducts } from '@aow/types';
+import { type ProductCategoryWithProducts } from '@aow/types/product-categories';
 import {
   closestCenter,
   DndContext,

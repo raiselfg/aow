@@ -1,5 +1,5 @@
 import prisma from '@/prisma/prisma-client';
-import { CreateProductCategorySchema } from '@/lib/validations';
+import { CreateProductCategorySchema } from '@aow/types/product-categories';
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
 import { NextResponse } from 'next/server';

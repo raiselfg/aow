@@ -1,4 +1,4 @@
-import { SignInSchema, type SignInSchemaType } from '@aow/types';
+import { SignInSchema, type SignInSchemaType } from '@aow/types/auth';
 import { Button } from '@aow/ui/components/button';
 import {
   Field,
@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-import { errorMessages, signUp } from '@/lib/auth-client';
+import { errorMessages, signIn } from '@/lib/auth-client';
 
 export const SignInForm = () => {
   const form = useForm<SignInSchemaType>({
@@ -26,18 +26,17 @@ export const SignInForm = () => {
   });
 
   async function onSubmit(data: SignInSchemaType) {
-    const { error } = await signUp.email({
-      name: 'Админ',
+    const { error } = await signIn.email({
       email: data.email,
       password: data.password,
-      // rememberMe: true,
-      // callbackURL: '/dashboard',
+      rememberMe: true,
+      callbackURL: '/dashboard',
     });
 
     if (error) {
       const errorCode = error.code as keyof typeof errorMessages;
       const message =
-        (error.code && errorMessages[errorCode]?.ru) || error.message;
+        (error.code && errorMessages[errorCode]?.message) || error.message;
       toast.error(message);
     } else {
       toast.success('Вы успешно вошли в систему');

@@ -1,8 +1,11 @@
 import prisma from '@/prisma/prisma-client';
-import { UpdateEventRequestSchema, IdParamSchema } from '@/lib/validations';
+import { UpdateEventRequestSchema } from '@aow/types/event-requests';
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
 import { NotFoundError } from '@/lib/errors';
+import { z } from 'zod';
+
+const IdParamSchema = z.object({ id: z.string().uuid() });
 
 export const GET = createHandler(async (_req, { params }) => {
   const { id } = IdParamSchema.parse(await params);
@@ -20,7 +23,12 @@ export const PATCH = createHandler(async (req, { params }) => {
   await requireAdminAuth();
   const { id } = IdParamSchema.parse(await params);
   const body = await req.json();
-  const validatedData = UpdateEventRequestSchema.parse(body);
+  
+  const validatedData = UpdateEventRequestSchema.parse({
+    ...body,
+    ...(body.start_date ? { start_date: new Date(body.start_date) } : {}),
+    ...(body.end_date ? { end_date: new Date(body.end_date) } : {}),
+  });
 
   const existing = await prisma.eventRequest.findUnique({ where: { id } });
   if (!existing) throw new NotFoundError('Event request not found');

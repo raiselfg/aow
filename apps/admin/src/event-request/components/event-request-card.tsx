@@ -2,7 +2,7 @@ import {
   statusColors,
   statusLabels,
   type EventRequestWithEventType,
-} from '@aow/types/event-requests.js';
+} from '@aow/types/event-requests';
 import { Badge } from '@aow/ui/components/badge';
 import {
   Card,

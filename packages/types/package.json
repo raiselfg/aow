@@ -16,8 +16,35 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./*.js": "./dist/*.js",
-    "./*": "./dist/*.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./auth": {
+      "types": "./dist/auth.d.ts",
+      "import": "./dist/auth.js",
+      "default": "./dist/auth.js"
+    },
+    "./products": {
+      "types": "./dist/products.d.ts",
+      "import": "./dist/products.js",
+      "default": "./dist/products.js"
+    },
+    "./product-categories": {
+      "types": "./dist/product-categories.d.ts",
+      "import": "./dist/product-categories.js",
+      "default": "./dist/product-categories.js"
+    },
+    "./event-requests": {
+      "types": "./dist/event-requests.d.ts",
+      "import": "./dist/event-requests.js",
+      "default": "./dist/event-requests.js"
+    },
+    "./event-types": {
+      "types": "./dist/event-types.d.ts",
+      "import": "./dist/event-types.js",
+      "default": "./dist/event-types.js"
+    }
   }
 }

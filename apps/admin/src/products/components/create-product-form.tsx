@@ -80,8 +80,12 @@ export const CreateProductForm = () => {
       multiple: false,
     });
 
-  const getErrorMessage = () => {
-    if (errors.file) return errors.file.message;
+  const getErrorMessage = (): string | null => {
+    if (errors.file?.message) {
+      return typeof errors.file.message === 'string'
+        ? errors.file.message
+        : 'Ошибка загрузки файла';
+    }
 
     if (fileRejections.length > 0) {
       const error = fileRejections[0].errors[0];
@@ -99,7 +103,6 @@ export const CreateProductForm = () => {
 
     return null;
   };
-
   const errorMessage = getErrorMessage();
 
   const createMutation = useMutation({

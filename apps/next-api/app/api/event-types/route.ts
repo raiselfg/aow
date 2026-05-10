@@ -1,5 +1,5 @@
 import prisma from '@/prisma/prisma-client';
-import { CreateEventTypeSchema } from '@/lib/validations';
+import { CreateEventTypeSchema } from '@aow/types/event-types';
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
 import { NextResponse } from 'next/server';

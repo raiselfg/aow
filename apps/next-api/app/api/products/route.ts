@@ -1,5 +1,5 @@
 import prisma from '@/prisma/prisma-client';
-import { CreateProductSchema } from '@/lib/validations';
+import { CreateProductApiSchema } from '@aow/types/products';
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
 import { randomUUID } from 'crypto';
@@ -15,7 +15,7 @@ export const GET = createHandler(async () => {
 export const POST = createHandler(async (req) => {
   await requireAdminAuth();
   const data = await req.json();
-  const validatedData = CreateProductSchema.parse(data);
+  const validatedData = CreateProductApiSchema.parse(data);
 
   const product = await prisma.product.create({
     data: {

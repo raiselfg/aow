@@ -2,7 +2,7 @@ import type {
   CreateEventTypeDTO,
   EventType,
   UpdateEventTypeDTO,
-} from '@aow/types/event-requests';
+} from '@aow/types/event-types';
 
 import { api, handleApiError } from '../../lib/axios-instance';
 

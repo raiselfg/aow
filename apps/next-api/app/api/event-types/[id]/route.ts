@@ -1,8 +1,11 @@
 import prisma from '@/prisma/prisma-client';
-import { UpdateEventTypeSchema, IdParamSchema } from '@/lib/validations';
+import { UpdateEventTypeSchema } from '@aow/types/event-types';
 import { createHandler } from '@/lib/route-handler';
 import { requireAdminAuth } from '@/lib/auth-utils';
 import { NotFoundError, ValidationError } from '@/lib/errors';
+import { z } from 'zod';
+
+const IdParamSchema = z.object({ id: z.string().uuid() });
 
 export const GET = createHandler(async (_req, { params }) => {
   const { id } = IdParamSchema.parse(await params);

@@ -1,7 +1,7 @@
 import {
   CreateProductCategorySchema,
   type CreateProductCategoryDTO,
-} from '@aow/types';
+} from '@aow/types/product-categories';
 import { Button } from '@aow/ui/components/button';
 import { Checkbox } from '@aow/ui/components/checkbox';
 import {

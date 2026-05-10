@@ -4,7 +4,7 @@ import {
   type EventRequestWithEventType,
   type UpdateEventRequestDTO,
   statusLabels,
-} from '@aow/types/event-requests.js';
+} from '@aow/types/event-requests';
 import { Button } from '@aow/ui/components/button';
 import {
   Dialog,
