@@ -159,12 +159,6 @@ importers:
 
   apps/api:
     dependencies:
-      '@aow/database':
-        specifier: workspace:*
-        version: link:../../packages/database
-      '@aow/types':
-        specifier: workspace:*
-        version: link:../../packages/types
       '@aws-sdk/client-s3':
         specifier: ^3.1044.0
         version: 3.1044.0
@@ -199,6 +193,12 @@ importers:
         specifier: ^0.34.5
         version: 0.34.5
     devDependencies:
+      '@aow/database':
+        specifier: workspace:*
+        version: link:../../packages/database
+      '@aow/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@eslint/js':
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.3.0(jiti@2.7.0))
