@@ -1,4 +1,4 @@
-import { prisma } from '@aow/database';
+import { getPrisma } from '@aow/database';
 import {
   ProductWithProductCategorySchema as BaseProductWithProductCategorySchema,
   CreateProductApiSchema as BaseCreateProductApiSchema,
@@ -9,6 +9,8 @@ import { randomUUID } from 'crypto';
 
 import { NotFoundError } from '../lib/errors.js';
 import { deleteFile } from '../lib/s3cloud.js';
+
+const prisma = getPrisma();
 
 // Schemas
 const ProductWithProductCategorySchema =

@@ -1,4 +1,4 @@
-import { prisma } from '@aow/database';
+import { getPrisma } from '@aow/database';
 import {
   ProductCategoryWithProductsSchema as BaseProductCategoryWithProductsSchema,
   CreateProductCategorySchema,
@@ -8,6 +8,8 @@ import {
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 
 import { NotFoundError, ValidationError } from '../lib/errors.js';
+
+const prisma = getPrisma();
 
 const ProductCategoryWithProductsSchema =
   BaseProductCategoryWithProductsSchema.openapi('ProductCategoryWithProducts');

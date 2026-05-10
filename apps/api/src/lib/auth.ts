@@ -1,4 +1,4 @@
-import { prisma } from '@aow/database';
+import { getPrisma } from '@aow/database';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { betterAuth } from 'better-auth/minimal';
 
@@ -9,7 +9,7 @@ export const auth = betterAuth({
   secret: env.BETTER_AUTH_SECRET,
   baseURL: env.BETTER_AUTH_URL,
   basePath: '/api/auth',
-  database: prismaAdapter(prisma, {
+  database: prismaAdapter(getPrisma(), {
     provider: 'postgresql',
   }),
   emailAndPassword: {
@@ -18,11 +18,11 @@ export const auth = betterAuth({
   },
   trustedOrigins: ['https://aow-admin-nu.vercel.app', 'http://localhost:5173'],
   session: {
-    expiresIn: 604800, // 7 дней
-    updateAge: 86400, // обновлять каждые 24 часа
+    expiresIn: 604800,
+    updateAge: 86400,
     cookieCache: {
       enabled: true,
-      maxAge: 300, // 5 минут кэша
+      maxAge: 300,
     },
   },
   advanced: {

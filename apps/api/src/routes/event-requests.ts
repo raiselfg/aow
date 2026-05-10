@@ -1,4 +1,4 @@
-import { prisma } from '@aow/database';
+import { getPrisma } from '@aow/database';
 import {
   EventRequestSchema,
   EventRequestWithEventTypeSchema as BaseEventRequestWithEventTypeSchema,
@@ -8,6 +8,8 @@ import {
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 
 import { NotFoundError } from '../lib/errors.js';
+
+const prisma = getPrisma();
 
 const EventRequestWithEventTypeSchema =
   BaseEventRequestWithEventTypeSchema.openapi('EventRequestWithEventType');
