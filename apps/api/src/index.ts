@@ -146,14 +146,18 @@ app.get('/docs', swaggerUI({ url: '/doc' }));
 const port = 3000;
 const hostname = '0.0.0.0';
 
-serve(
-  {
-    fetch: app.fetch,
-    port,
-    hostname,
-  },
-  info => {
-    console.log(`Server is running on http://localhost:${info.port}`);
-    console.log(`Environment: ${env.NODE_ENV}`);
-  },
-);
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  serve(
+    {
+      fetch: app.fetch,
+      port,
+      hostname,
+    },
+    info => {
+      console.log(`Server is running on http://localhost:${info.port}`);
+      console.log(`Environment: ${env.NODE_ENV}`);
+    },
+  );
+}
+
+export default app;

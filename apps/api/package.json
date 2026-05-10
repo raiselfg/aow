@@ -1,9 +1,16 @@
 {
   "name": "@aow/api",
   "type": "module",
+  "scripts": {
+    "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
+    "build": "tsup",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
   "dependencies": {
     "@aow/database": "workspace:*",
     "@aow/types": "workspace:*",
+    "@prisma/client": "^7.8.0",
     "@aws-sdk/client-s3": "^3.1044.0",
     "@hono/node-server": "^2.0.1",
     "@hono/swagger-ui": "^0.6.1",
