@@ -11,12 +11,12 @@
   "dependencies": {
     "@aow/database": "workspace:*",
     "@aow/types": "workspace:*",
-    "@aws-sdk/client-s3": "^3.1044.0",
     "@hono/node-server": "^2.0.1",
     "@hono/swagger-ui": "^0.6.1",
     "@hono/zod-openapi": "^1.3.0",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
+    "@vercel/blob": "^2.3.3",
     "better-auth": "^1.6.9",
     "dotenv": "^17.4.2",
     "hono": "^4.12.18",

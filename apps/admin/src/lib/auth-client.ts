@@ -4,7 +4,7 @@ export const authClient = createAuthClient({
   baseURL: import.meta.env.VITE_BETTER_AUTH_BASE_URL as string,
 });
 
-export const { signIn, signOut, useSession } = authClient;
+export const { signIn, signUp, signOut, useSession } = authClient;
 
 type ErrorMessages = Partial<
   Record<keyof typeof authClient.$ERROR_CODES, { en: string; ru: string }>

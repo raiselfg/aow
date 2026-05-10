@@ -15,22 +15,8 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false,
-    minPasswordLength: 6,
-    maxPasswordLength: 64,
-    disableSignUp: true,
   },
-  trustedOrigins: [
-    'https://us-ta.ru',
-    'https://admin.us-ta.ru',
-    'https://cdn.us-ta.ru',
-    'http://localhost:5173',
-    'http://localhost:3001',
-  ],
-  rateLimit: {
-    enabled: true,
-    window: 60,
-    max: 100,
-  },
+  trustedOrigins: ['https://aow-admin-nu.vercel.app', 'http://localhost:5173'],
   session: {
     expiresIn: 604800, // 7 дней
     updateAge: 86400, // обновлять каждые 24 часа

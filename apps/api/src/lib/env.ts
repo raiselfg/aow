@@ -7,12 +7,8 @@ const envSchema = z.object({
     .default('development'),
   BETTER_AUTH_SECRET: z.string().min(1),
   BETTER_AUTH_URL: z.url(),
-  PRISMA_DATABASE_URL: z.string().min(1),
-  S3_ENDPOINT: z.url(),
-  S3_REGION: z.string().min(1),
-  S3_ACCESS_KEY: z.string().min(1),
-  S3_SECRET_KEY: z.string().min(1),
-  S3_BUCKET: z.string().min(1),
+  DATABASE_URL: z.string().min(1),
+  BLOB_READ_WRITE_TOKEN: z.string().min(1),
 });
 
 const parsed = envSchema.safeParse(process.env);

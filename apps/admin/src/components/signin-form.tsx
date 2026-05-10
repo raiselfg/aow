@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-import { errorMessages, signIn } from '@/lib/auth-client';
+import { errorMessages, signUp } from '@/lib/auth-client';
 
 export const SignInForm = () => {
   const form = useForm<SignInSchemaType>({
@@ -26,11 +26,12 @@ export const SignInForm = () => {
   });
 
   async function onSubmit(data: SignInSchemaType) {
-    const { error } = await signIn.email({
+    const { error } = await signUp.email({
+      name: 'Админ',
       email: data.email,
       password: data.password,
-      rememberMe: true,
-      callbackURL: '/dashboard',
+      // rememberMe: true,
+      // callbackURL: '/dashboard',
     });
 
     if (error) {
