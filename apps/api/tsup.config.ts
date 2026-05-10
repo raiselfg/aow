@@ -5,7 +5,7 @@ export default defineConfig({
   format: ['esm'], // Используем современные модули
   target: 'node20', // Vercel Node.js runtime
   clean: true, // Чистим папку перед билдом
-  outDir: 'api', // Vercel ожидает функции в папке api
+  outDir: 'dist',
   minify: false, // Для бэкенда минификация обычно не нужна
   sourcemap: true,
   splitting: false,

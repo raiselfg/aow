@@ -161,4 +161,5 @@ if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
   );
 }
 
-export default handle(app);
+export { app };
+export default app;

@@ -26,7 +26,7 @@
     "apps/landing/**/*.{ts,tsx,mjs}": [
       "pnpm --filter @aow/landing lint:fix"
     ],
-    "apps/api/src/**/*.{ts,js,mjs}": [
+    "apps/api/**/*.{ts,js,mjs}": [
       "pnpm --filter @aow/api lint:fix"
     ],
     "**/*.{json,md,css}": [
