@@ -37,3 +37,5 @@ coverage
 Thumbs.db
 *.pem
 .vercel
+.vercel
+.env*.local

@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["DATABASE_URL", "NODE_ENV"],
+  "globalEnv": ["PRISMA_DATABASE_URL", "NODE_ENV"],
   "tasks": {
     "build": {
       "dependsOn": ["^build", "db:generate"],
