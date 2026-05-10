@@ -10,11 +10,11 @@ import sharp from 'sharp';
 import { env } from './env.js';
 import { ValidationError, StorageError } from './errors.js';
 
-const ENDPOINT = env.AWS_ENDPOINT;
-const REGION = env.AWS_REGION;
-const ACCESS_KEY = env.AWS_ACCESS_KEY;
-const SECRET_KEY = env.AWS_SECRET_KEY;
-const BUCKET = env.AWS_BUCKET;
+const ENDPOINT = env.S3_ENDPOINT;
+const REGION = env.S3_REGION;
+const ACCESS_KEY = env.S3_ACCESS_KEY;
+const SECRET_KEY = env.S3_SECRET_KEY;
+const BUCKET = env.S3_BUCKET;
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
