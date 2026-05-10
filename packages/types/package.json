@@ -7,7 +7,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@aow/database": "workspace:*",
     "zod": "^4.4.3"
   },
   "devDependencies": {
