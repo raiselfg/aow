@@ -51,11 +51,8 @@ app.use(
   cors({
     origin: origin => {
       const allowedOrigins = [
-        'https://us-ta.ru',
-        'https://admin.us-ta.ru',
-        'https://cdn.us-ta.ru',
+        'https://aow-admin-nu.vercel.app',
         'http://localhost:5173',
-        'http://localhost:3001',
       ];
 
       if (!origin) return allowedOrigins[0];
