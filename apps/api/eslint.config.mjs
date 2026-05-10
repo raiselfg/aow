@@ -7,7 +7,14 @@ import prettier from 'eslint-plugin-prettier/recommended';
 export default tseslint.config(
   {
     // Глобальные игноры должны быть в отдельном объекте первым элементом
-    ignores: ['dist', 'node_modules', '.hono', 'coverage', 'tsup.config.ts'],
+    ignores: [
+      'dist',
+      'api',
+      'node_modules',
+      '.hono',
+      'coverage',
+      'tsup.config.ts',
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

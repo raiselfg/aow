@@ -7,6 +7,7 @@ import { OpenAPIHono } from '@hono/zod-openapi';
 import { rateLimiter } from 'hono-rate-limiter';
 import { cors } from 'hono/cors';
 import { secureHeaders } from 'hono/secure-headers';
+import { handle } from 'hono/vercel';
 
 import { auth } from './lib/auth.js';
 import { env } from './lib/env.js';
@@ -160,4 +161,4 @@ if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
   );
 }
 
-export default app;
+export default handle(app);

@@ -1,8 +1,10 @@
 {
   "name": "@aow/api",
+  "version": "0.0.0",
   "type": "module",
+  "main": "api/index.js",
   "scripts": {
-    "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
+    "dev": "tsup --watch --onSuccess \"node api/index.js\"",
     "build": "tsup",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
