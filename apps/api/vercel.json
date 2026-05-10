@@ -1,8 +1,11 @@
 {
+  "version": 2,
+  "buildCommand": "cd ../.. && pnpm turbo run build --filter=@aow/api...",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/src/index.ts"
+      "destination": "/dist/index.js"
     }
   ]
 }
