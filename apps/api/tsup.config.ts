@@ -14,6 +14,9 @@ export default defineConfig({
     '@prisma/adapter-pg',
     'pg',
     'pg-native',
+    'zod',
+    '@hono/zod-openapi',
+    'hono',
   ],
   noExternal: ['@aow/types', '@aow/database'],
 });
