@@ -25,7 +25,7 @@ import {
 } from '@aow/ui/components/select';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Loader2, Plus } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -107,9 +107,7 @@ export const CreateEventRequestForm = () => {
       onOpenChange={val => (!val ? handleClose() : setIsOpen(true))}
     >
       <DialogTrigger asChild>
-        <Button>
-          <Plus className='mr-2 h-4 w-4' /> Создать заявку
-        </Button>
+        <Button>Создать заявку</Button>
       </DialogTrigger>
 
       <DialogContent className='max-h-[90vh] overflow-y-auto sm:max-w-xl'>

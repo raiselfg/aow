@@ -8,7 +8,9 @@ export async function requireAdminAuth() {
   });
 
   if (!session) {
-    throw new UnauthorizedError('Unauthorized: Требуется авторизация в админке');
+    throw new UnauthorizedError(
+      'Unauthorized: Требуется авторизация в админке',
+    );
   }
 
   return session;

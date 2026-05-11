@@ -65,14 +65,14 @@ export const CreateEventTypeForm = () => {
       onOpenChange={val => (!val ? handleClose() : setIsOpen(true))}
     >
       <DialogTrigger asChild>
-        <Button>Создать тип</Button>
+        <Button>Создать тип праздника</Button>
       </DialogTrigger>
 
       <DialogContent className='sm:max-w-110'>
         <DialogHeader>
-          <DialogTitle>Новый тип события</DialogTitle>
+          <DialogTitle>Новый тип праздника</DialogTitle>
           <DialogDescription>
-            Добавьте новый тип события, например "Свадьба" или "Юбилей".
+            Добавьте новый тип праздника, например "Свадьба" или "Юбилей".
           </DialogDescription>
         </DialogHeader>
 

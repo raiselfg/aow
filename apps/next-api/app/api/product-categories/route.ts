@@ -12,7 +12,7 @@ export const GET = createHandler(async () => {
   return productCategories;
 });
 
-export const POST = createHandler(async (req) => {
+export const POST = createHandler(async req => {
   await requireAdminAuth();
   const body = await req.json();
   const validatedData = CreateProductCategorySchema.parse(body);

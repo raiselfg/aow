@@ -32,7 +32,7 @@ const data = {
           url: '/dashboard/event-types',
         },
         {
-          title: 'Праздники',
+          title: 'Заявки на праздники',
           url: '/dashboard/event-requests',
         },
       ],

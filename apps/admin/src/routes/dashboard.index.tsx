@@ -2,20 +2,37 @@ import { Separator } from '@aow/ui/components/separator';
 import { useQueries } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 
-import { categoryOptions, productOptions } from '@/lib/query-options';
+import {
+  categoryOptions,
+  eventRequestOptions,
+  eventTypeOptions,
+  productOptions,
+} from '@/lib/query-options';
 
 export const Route = createFileRoute('/dashboard/')({
   loader: ({ context: { queryClient } }) =>
     Promise.all([
       queryClient.ensureQueryData(productOptions.list()),
       queryClient.ensureQueryData(categoryOptions.list()),
+      queryClient.ensureQueryData(eventTypeOptions.list()),
+      queryClient.ensureQueryData(eventRequestOptions.list()),
     ]),
   component: DashboardIndexContent,
 });
 
 function DashboardIndexContent() {
-  const [{ data: products }, { data: categories }] = useQueries({
-    queries: [productOptions.list(), categoryOptions.list()],
+  const [
+    { data: products },
+    { data: categories },
+    { data: eventType },
+    { data: eventRequests },
+  ] = useQueries({
+    queries: [
+      productOptions.list(),
+      categoryOptions.list(),
+      eventTypeOptions.list(),
+      eventRequestOptions.list(),
+    ],
   });
 
   const stats = [
@@ -28,6 +45,16 @@ function DashboardIndexContent() {
       label: 'Категории товаров',
       value: categories?.length || 0,
       link: '/dashboard/product-categories',
+    },
+    {
+      label: 'Типы праздников',
+      value: eventType?.length || 0,
+      link: '/dashboard/event-types',
+    },
+    {
+      label: 'Заявки на праздники',
+      value: eventRequests?.length || 0,
+      link: '/dashboard/event-requests',
     },
   ];
 
